@@ -67,6 +67,42 @@ curl "https://api.anthropic.com/v1/complete" \
   }'
 ```
 
+## Cohere
+
+🔑 Get API key [here](https://dashboard.cohere.com/api-keys).
+
+### Chat
+```bash
+curl "https://api.cohere.ai/v1/chat" \
+  -H 'accept: application/json' \
+  -H 'content-type: application/json' \
+  -H "Authorization: Bearer $COHERE_API_KEY" \
+  -d '{
+    "chat_history": [
+      {"role": "USER", "message": "Who discovered gravity?"},
+      {"role": "CHATBOT", "message": "The man who is widely credited with discovering gravity is Sir Isaac Newton"}
+    ],
+    "message": "What year was he born?",
+    "connectors": [{"id": "web-search"}]
+  }'
+```
+
+### Embeddings
+```bash
+curl "https://api.cohere.ai/v1/embed" \
+  -H 'accept: application/json' \
+  -H "Authorization: Bearer $COHERE_API_KEY" \
+  -H 'content-type: application/json' \
+  -H "Authorization: Bearer $COHERE_API_KEY" \
+  -d '{
+      "texts": [
+        "hello",
+        "goodbye"
+      ],
+      "truncate": "END"
+  }'
+```
+
 ## Mistral
 
 🔑 Get API key [here](https://console.mistral.ai/users/api-keys/).
