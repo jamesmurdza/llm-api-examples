@@ -9,6 +9,7 @@ This repository contains a list of working code examples for calling various LLM
 ## Table of Contents
 
 - [OpenAI](#openai)
+- [Anthropic](#openai)
 - [Mistral](#mistral)
 - [Google](#google)
 
@@ -45,13 +46,38 @@ import os
 response = requests.post(
     "https://api.openai.com/v1/embeddings",
     headers={
-        "Authorization": "Bearer " + os.environ["OPENAI_API_KEY"],
+        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
         "Content-Type": "application/json"
     },
     json={
         "input": "The food was delicious and the wine...",
         "model": "text-embedding-ada-002",
         "encoding_format": "float"
+    }
+)
+```
+
+## Anthropic
+
+🔑 Get API key [here](https://console.anthropic.com/account/keys).
+
+### Chat
+```python
+import requests
+import os
+
+response = requests.post(
+    "https://api.anthropic.com/v1/complete",
+    headers={
+        'accept': 'application/json',
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+        'x-api-key': os.environ['ANTHROPIC_API_KEY']
+    },
+    json={
+        "model": "claude-2.1",
+        "prompt": "\n\nHuman: Hello, world!\n\nAssistant:",
+        "max_tokens_to_sample": 256
     }
 )
 ```
@@ -68,9 +94,9 @@ import os
 response = requests.post(
     "https://api.mistral.ai/v1/chat/completions",
     headers={
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": f"Bearer {os.environ['MISTRAL_API_KEY']}"
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': f"Bearer {os.environ['MISTRAL_API_KEY']}"
     },
     json={
         "model": "mistral-tiny",
@@ -130,8 +156,8 @@ import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get("GOOGLE_API_KEY"),
-    headers={"Content-Type": "application/json"},
+    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get('GOOGLE_API_KEY'),
+    headers={'Content-Type': 'application/json'},
     json={
         "contents": [
             {
