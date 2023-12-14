@@ -98,7 +98,6 @@ curl "https://api.cohere.ai/v1/chat" \
 ```bash
 curl "https://api.cohere.ai/v1/embed" \
   -H 'accept: application/json' \
-  -H "Authorization: Bearer $COHERE_API_KEY" \
   -H 'content-type: application/json' \
   -H "Authorization: Bearer $COHERE_API_KEY" \
   -d '{
