@@ -18,13 +18,15 @@ This repository contains a list of working code examples for calling various LLM
 
 🔑 Get API key [here](https://platform.openai.com/account/api-keys).
 
+📃 API [docs](https://platform.openai.com/docs/).
+
 ### Chat
 ```python
 import requests
 import os
 
 response = requests.post(
-    "https://api.openai.com/v1/...",
+    "https://api.openai.com/v1/chat/completions",
     headers={
         "Content-Type": "application/json",
         "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"
@@ -40,20 +42,33 @@ response = requests.post(
 ```
 
 ### Embeddings
+Here is the concise version of the code:
+
 ```python
 import requests
 import os
 
 response = requests.post(
     "https://api.openai.com/v1/embeddings",
-    headers={"Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}", "Content-Type": "application/json"},
-    json={"input": "The food was delicious and the wine...", "model": "text-embedding-ada-002", "encoding_format": "float"}
+    headers={
+        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+        "Content-Type": "application/json"
+    },
+    json={
+        "input": "The food was delicious and the wine...",
+        "model": "text-embedding-ada-002",
+        "encoding_format": "float"
+    }
 )
 ```
+
+Please make sure to replace `https://...` with the actual URL you are using.
 
 ## Anthropic
 
 🔑 Get API key [here](https://console.anthropic.com/account/keys).
+
+📃 API [docs](https://docs.anthropic.com/).
 
 ### Chat
 ```python
@@ -80,6 +95,8 @@ response = requests.post(
 
 🔑 Get API key [here](https://dashboard.cohere.com/api-keys).
 
+📃 API [docs](https://docs.cohere.com/).
+
 ### Chat
 ```python
 import requests
@@ -88,9 +105,9 @@ import os
 response = requests.post(
     "https://api.cohere.ai/v1/chat",
     headers={
-        "accept": "application/json",
-        "content-type": "application/json",
-        "Authorization": f"Bearer {os.environ['COHERE_API_KEY']}"
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'Authorization': f'Bearer {os.environ["COHERE_API_KEY"]}'
     },
     json={
         "chat_history": [
@@ -110,21 +127,16 @@ import os
 
 response = requests.post(
     "https://api.cohere.ai/v1/embed",
-    headers={
-        "accept": "application/json",
-        "Authorization": f"Bearer {os.environ['COHERE_API_KEY']}",
-        "content-type": "application/json",
-    },
-    json={
-        "texts": ["hello", "goodbye"],
-        "truncate": "END"
-    }
+    headers={"accept": "application/json", "Authorization": f"Bearer {os.environ['COHERE_API_KEY']}", "content-type": "application/json"},
+    json={"texts": ["hello", "goodbye"], "truncate": "END"}
 )
 ```
 
 ## Mistral
 
 🔑 Get API key [here](https://console.mistral.ai/users/api-keys/).
+
+📃 API [docs](https://docs.mistral.ai/api/).
 
 ### Chat
 ```python
@@ -136,11 +148,11 @@ response = requests.post(
     headers={
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': f'Bearer {os.environ["MISTRAL_API_KEY"]}'
+        'Authorization': 'Bearer ' + os.environ['MISTRAL_API_KEY'],
     },
     json={
-        "model": "mistral-tiny",
-        "messages": [{"role": "user", "content": "Who is the most renowned French writer?"}]
+        'model': 'mistral-tiny',
+        'messages': [{'role': 'user', 'content': 'Who is the most renowned French writer?'}]
     }
 )
 ```
@@ -168,14 +180,16 @@ response = requests.post(
 
 🔑 Get API key [here](https://makersuite.google.com/app/apikey).
 
+📃 API [docs](https://ai.google.dev/api/rest).
+
 ### Chat
 ```python
 import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + os.environ.get("GOOGLE_API_KEY"),
-    headers={"Content-Type": "application/json"},
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + os.environ['GOOGLE_API_KEY'],
+    headers={'Content-Type': 'application/json'},
     json={
         "contents": [
             {
@@ -196,8 +210,8 @@ import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ['GOOGLE_API_KEY'],
-    headers={"Content-Type": "application/json"},
+    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get('GOOGLE_API_KEY'),
+    headers={'Content-Type': 'application/json'},
     json={
         "contents": [
             {
