@@ -1,3 +1,9 @@
+## Table of Contents
+
+- [OpenAI](#openai)
+- [Mistral](#mistral)
+- [Google](#google)
+
 ## OpenAI
 
 🔑 Get API key [here](https://platform.openai.com/account/api-keys).
