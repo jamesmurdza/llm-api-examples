@@ -18,6 +18,8 @@ This repository contains a list of working code examples for calling various LLM
 
 🔑 Get API key [here](https://platform.openai.com/account/api-keys).
 
+📃 API [docs](https://platform.openai.com/docs/).
+
 ### Chat
 ```bash
 curl "https://api.openai.com/v1/chat/completions" \
@@ -54,6 +56,8 @@ curl "https://api.openai.com/v1/embeddings" \
 
 🔑 Get API key [here](https://console.anthropic.com/account/keys).
 
+📃 API [docs](https://docs.anthropic.com/).
+
 ### Chat
 ```bash
 curl "https://api.anthropic.com/v1/complete" \
@@ -71,6 +75,8 @@ curl "https://api.anthropic.com/v1/complete" \
 ## Cohere
 
 🔑 Get API key [here](https://dashboard.cohere.com/api-keys).
+
+📃 API [docs](https://docs.cohere.com/).
 
 ### Chat
 ```bash
@@ -108,6 +114,8 @@ curl "https://api.cohere.ai/v1/embed" \
 
 🔑 Get API key [here](https://console.mistral.ai/users/api-keys/).
 
+📃 API [docs](https://docs.mistral.ai/api/).
+
 ### Chat
 ```bash
 curl "https://api.mistral.ai/v1/chat/completions" \
@@ -135,6 +143,8 @@ curl "https://api.mistral.ai/v1/embeddings" \
 ## Google
 
 🔑 Get API key [here](https://makersuite.google.com/app/apikey).
+
+📃 API [docs](https://ai.google.dev/api/rest).
 
 ### Chat
 ```bash
