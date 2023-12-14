@@ -1,3 +1,11 @@
+# LLM API call examples
+
+This repository contains a list of working code examples for calling various LLM APIs.
+
+[README.md](README.md) is the source of truth and contains all examples in `curl` format.
+
+[README-python.md](README-python.md) contains the same examples in Python, and is generated automatically using GPT-3.5 whenever README.md is updated.
+
 ## Table of Contents
 
 - [OpenAI](#openai)
@@ -17,7 +25,7 @@ response = requests.post(
     "https://api.openai.com/v1/chat/completions",
     headers={
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {os.environ.get('OPENAI_API_KEY')}"
+        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"
     },
     json={
         "model": "gpt-3.5-turbo",
@@ -37,7 +45,7 @@ import os
 response = requests.post(
     "https://api.openai.com/v1/embeddings",
     headers={
-        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+        "Authorization": "Bearer " + os.environ["OPENAI_API_KEY"],
         "Content-Type": "application/json"
     },
     json={
@@ -62,7 +70,7 @@ response = requests.post(
     headers={
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": "Bearer " + os.environ["MISTRAL_API_KEY"]
+        "Authorization": f"Bearer {os.environ['MISTRAL_API_KEY']}"
     },
     json={
         "model": "mistral-tiny",
@@ -100,8 +108,8 @@ import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + os.environ["GOOGLE_API_KEY"],
-    headers={'Content-Type': 'application/json'},
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + os.environ.get("GOOGLE_API_KEY"),
+    headers={"Content-Type": "application/json"},
     json={
         "contents": [
             {
@@ -122,8 +130,8 @@ import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get('GOOGLE_API_KEY'),
-    headers={'Content-Type': 'application/json'},
+    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get("GOOGLE_API_KEY"),
+    headers={"Content-Type": "application/json"},
     json={
         "contents": [
             {
