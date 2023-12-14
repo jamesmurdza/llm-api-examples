@@ -6,21 +6,18 @@ curl "https://api.openai.com/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-  "model": "gpt-3.5-turbo",
-  "messages": [
-    {
-      "role": "system",
-      "content": "You will be provided with statements, and your task is to convert them to standard English."
-    },
-    {
-      "role": "user",
-      "content": "She no went to the market."
-    }
-  ],
-  "temperature": 0.7,
-  "max_tokens": 64,
-  "top_p": 1
-}'
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
+      }
+    ]
+  }'
 ```
 
 ### Embeddings
@@ -40,10 +37,10 @@ curl "https://api.openai.com/v1/embeddings" \
 ### Chat
 ```bash
 curl "https://api.mistral.ai/v1/chat/completions" \
-     -H 'Content-Type: application/json' \
-     -H 'Accept: application/json' \
-     -H "Authorization: Bearer $MISTRAL_API_KEY" \
-     -d '{
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H "Authorization: Bearer $MISTRAL_API_KEY" \
+  -d '{
     "model": "mistral-tiny",
     "messages": [{"role": "user", "content": "Who is the most renowned French painter?"}]
   }'
@@ -52,10 +49,10 @@ curl "https://api.mistral.ai/v1/chat/completions" \
 ### Embeddings
 ```bash
 curl "https://api.mistral.ai/v1/embeddings" \
-     -H 'Content-Type: application/json' \
-     -H 'Accept: application/json' \
-     -H "Authorization: Bearer $MISTRAL_API_KEY" \
-     -d '{
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H "Authorization: Bearer $MISTRAL_API_KEY" \
+  -d '{
     "model": "mistral-embed",
     "input": ["Embed this sentence.", "As well as this one."]
   }'
