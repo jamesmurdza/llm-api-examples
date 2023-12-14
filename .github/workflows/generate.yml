@@ -1,0 +1,37 @@
+name: Generate README-python.md
+
+on:
+  push:
+    branches:
+      - main  # Replace with your main branch name
+    paths:
+      - README.md
+
+jobs:
+  generate-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  # Use the Python version you need
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run script to generate README-python.md
+        env:
+          MY_SECRET: ${{ secrets.OPENAI_API_KEY }}
+        run: python generate.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add README-python.md
+          git commit -m "Generate README-python.md"
+          git push
