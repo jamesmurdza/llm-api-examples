@@ -10,6 +10,7 @@ This repository contains a list of working code examples for calling various LLM
 
 - [OpenAI](#openai)
 - [Anthropic](#anthropic)
+- [Cohere](#cohere)
 - [Mistral](#mistral)
 - [Google](#google)
 
