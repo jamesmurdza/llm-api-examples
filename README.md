@@ -9,7 +9,7 @@ This repository contains a list of working code examples for calling various LLM
 ## Table of Contents
 
 - [OpenAI](#openai)
-- [Anthropic](#openai)
+- [Anthropic](#anthropic)
 - [Mistral](#mistral)
 - [Google](#google)
 
