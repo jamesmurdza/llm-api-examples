@@ -59,7 +59,7 @@ curl "https://api.anthropic.com/v1/complete" \
   -H 'accept: application/json' \
   -H 'anthropic-version: 2023-06-01' \
   -H 'content-type: application/json' \
-  -H "x-api-key: $ANTHROPIC_API_KEY"
+  -H "x-api-key: $ANTHROPIC_API_KEY" \
   -d '{
     "model": "claude-2.1",
     "prompt": "\n\nHuman: Hello, world!\n\nAssistant:",
