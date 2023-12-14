@@ -52,7 +52,7 @@ curl "https://api.mistral.ai/v1/chat/completions" \
   -H "Authorization: Bearer $MISTRAL_API_KEY" \
   -d '{
     "model": "mistral-tiny",
-    "messages": [{"role": "user", "content": "Who is the most renowned French painter?"}]
+    "messages": [{"role": "user", "content": "Who is the most renowned French writer?"}]
   }'
 ```
 
