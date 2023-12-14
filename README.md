@@ -1,3 +1,11 @@
+# LLM API call examples
+
+This repository contains a list of working code examples for calling various LLM APIs.
+
+[README.md](README.md) is the source of truth and contains all examples in `curl` format.
+
+[README-python.md](README-python.md) contains the same examples in Python, and is generated automatically using GPT-3.5 whenever README.md is updated.
+
 ## Table of Contents
 
 - [OpenAI](#openai)
