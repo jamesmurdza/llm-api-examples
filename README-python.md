@@ -9,7 +9,7 @@ This repository contains a list of working code examples for calling various LLM
 ## Table of Contents
 
 - [OpenAI](#openai)
-- [Anthropic](#openai)
+- [Anthropic](#anthropic)
 - [Mistral](#mistral)
 - [Google](#google)
 
@@ -26,13 +26,19 @@ response = requests.post(
     "https://api.openai.com/v1/chat/completions",
     headers={
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"
+        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
     },
     json={
         "model": "gpt-3.5-turbo",
         "messages": [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Hello!"}
+            {
+                "role": "system",
+                "content": "You are a helpful assistant."
+            },
+            {
+                "role": "user",
+                "content": "Hello!"
+            }
         ]
     }
 )
@@ -72,7 +78,7 @@ response = requests.post(
         'accept': 'application/json',
         'anthropic-version': '2023-06-01',
         'content-type': 'application/json',
-        'x-api-key': os.environ['ANTHROPIC_API_KEY']
+        'x-api-key': os.environ.get('ANTHROPIC_API_KEY')
     },
     json={
         "model": "claude-2.1",
@@ -156,8 +162,8 @@ import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get('GOOGLE_API_KEY'),
-    headers={'Content-Type': 'application/json'},
+    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get("GOOGLE_API_KEY"),
+    headers={"Content-Type": "application/json"},
     json={
         "contents": [
             {
