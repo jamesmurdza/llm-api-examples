@@ -25,7 +25,7 @@ jobs:
 
       - name: Run script to generate README-python.md
         env:
-          MY_SECRET: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python generate.py
 
       - name: Commit and push changes
