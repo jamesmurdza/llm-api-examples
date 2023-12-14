@@ -57,3 +57,41 @@ curl "https://api.mistral.ai/v1/embeddings" \
     "input": ["Embed this sentence.", "As well as this one."]
   }'
 ```
+
+## Google
+
+### Chat
+```bash
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$GOOGLE_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -X POST \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {
+            "text": "Write a story about a magic backpack."
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+### Embeddings
+```bash
+curl "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=$GOOGLE_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -X POST \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {
+            "text": "This is a sentence."
+          }
+        ]
+      }
+    ]
+  }'
+```
