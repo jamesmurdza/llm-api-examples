@@ -9,6 +9,7 @@ This repository contains a list of working code examples for calling various LLM
 ## Table of Contents
 
 - [OpenAI](#openai)
+- [Anthropic](#openai)
 - [Mistral](#mistral)
 - [Google](#google)
 
@@ -45,6 +46,24 @@ curl "https://api.openai.com/v1/embeddings" \
     "input": "The food was delicious and the wine...",
     "model": "text-embedding-ada-002",
     "encoding_format": "float"
+  }'
+```
+
+## Anthropic
+
+🔑 Get API key [here](https://console.anthropic.com/account/keys).
+
+### Chat
+```bash
+curl "https://api.anthropic.com/v1/complete" \
+  -H 'accept: application/json' \
+  -H 'anthropic-version: 2023-06-01' \
+  -H 'content-type: application/json' \
+  -H 'x-api-key: $ANTHROPIC_API_KEY'
+  -d '{
+    "model": "claude-2.1",
+    "prompt": "\n\nHuman: Hello, world!\n\nAssistant:",
+    "max_tokens_to_sample": 256
   }'
 ```
 
