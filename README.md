@@ -1,5 +1,7 @@
 ## OpenAI
 
+🔑 Get API key [here](https://platform.openai.com/account/api-keys).
+
 ### Chat
 ```bash
 curl "https://api.openai.com/v1/chat/completions" \
@@ -34,6 +36,8 @@ curl "https://api.openai.com/v1/embeddings" \
 
 ## Mistral
 
+🔑 Get API key [here](https://console.mistral.ai/users/api-keys/).
+
 ### Chat
 ```bash
 curl "https://api.mistral.ai/v1/chat/completions" \
@@ -59,6 +63,8 @@ curl "https://api.mistral.ai/v1/embeddings" \
 ```
 
 ## Google
+
+🔑 Get API key [here](https://makersuite.google.com/app/apikey).
 
 ### Chat
 ```bash
