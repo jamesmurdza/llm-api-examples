@@ -6,6 +6,8 @@ This repository contains a list of working code examples for calling various LLM
 
 [README-python.md](README-python.md) contains the same examples in Python, and is generated automatically using GPT-3.5 whenever README.md is updated.
 
+See also: [List of cloud hosts for inference and fine-tuning](https://github.com/jamesmurdza/awesome-inference-hosts)
+
 ## Table of Contents
 
 - [OpenAI](#openai)
