@@ -6,6 +6,8 @@ This repository contains a list of working code examples for calling various LLM
 
 [README-python.md](README-python.md) contains the same examples in Python, and is generated automatically using GPT-3.5 whenever README.md is updated.
 
+See also: [List of cloud hosts for inference and fine-tuning](https://github.com/jamesmurdza/awesome-inference-hosts)
+
 ## Table of Contents
 
 - [OpenAI](#openai)
@@ -25,11 +27,13 @@ This repository contains a list of working code examples for calling various LLM
 import requests
 import os
 
+API_KEY = os.environ.get('OPENAI_API_KEY')
+
 response = requests.post(
     "https://api.openai.com/v1/chat/completions",
     headers={
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"
+        "Authorization": f"Bearer {API_KEY}"
     },
     json={
         "model": "gpt-3.5-turbo",
@@ -42,14 +46,23 @@ response = requests.post(
 ```
 
 ### Embeddings
+```python
 import requests
 import os
 
 response = requests.post(
     "https://api.openai.com/v1/embeddings",
-    headers={"Authorization": f"Bearer {os.environ.get('OPENAI_API_KEY')}", "Content-Type": "application/json"},
-    json={"input": "The food was delicious and the wine...", "model": "text-embedding-ada-002", "encoding_format": "float"}
+    headers={
+        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+        "Content-Type": "application/json"
+    },
+    json={
+        "input": "The food was delicious and the wine...",
+        "model": "text-embedding-ada-002",
+        "encoding_format": "float"
+    }
 )
+```
 
 ## Anthropic
 
@@ -58,6 +71,8 @@ response = requests.post(
 📃 API [docs](https://docs.anthropic.com/).
 
 ### Chat
+Sure! Here's the converted code:
+
 ```python
 import requests
 import os
@@ -65,10 +80,10 @@ import os
 response = requests.post(
     "https://api.anthropic.com/v1/complete",
     headers={
-        'accept': 'application/json',
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-        'x-api-key': os.environ['ANTHROPIC_API_KEY']
+        "accept": "application/json",
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+        "x-api-key": os.environ["ANTHROPIC_API_KEY"],
     },
     json={
         "model": "claude-2.1",
@@ -77,6 +92,8 @@ response = requests.post(
     }
 )
 ```
+
+Note: Replace `"https://..."` with the actual endpoint URL you want to access.
 
 ## Cohere
 
@@ -94,7 +111,7 @@ response = requests.post(
     headers={
         "accept": "application/json",
         "content-type": "application/json",
-        "Authorization": f"Bearer {os.environ.get('COHERE_API_KEY')}"
+        "Authorization": f"Bearer {os.environ['COHERE_API_KEY']}"
     },
     json={
         "chat_history": [
@@ -106,7 +123,6 @@ response = requests.post(
     }
 )
 ```
-Remember to replace `https://api.cohere.ai/v1/chat` with the actual endpoint URL you want to use.
 
 ### Embeddings
 ```python
@@ -118,7 +134,7 @@ response = requests.post(
     headers={
         "accept": "application/json",
         "content-type": "application/json",
-        "Authorization": f"Bearer {os.environ['COHERE_API_KEY']}",
+        "Authorization": f"Bearer {os.environ['COHERE_API_KEY']}"
     },
     json={
         "texts": ["hello", "goodbye"],
@@ -141,9 +157,9 @@ import os
 response = requests.post(
     "https://api.mistral.ai/v1/chat/completions",
     headers={
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': f'Bearer {os.environ["MISTRAL_API_KEY"]}'
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": f"Bearer {os.environ['MISTRAL_API_KEY']}"
     },
     json={
         "model": "mistral-tiny",
@@ -179,8 +195,8 @@ response = requests.post(
 
 ### Chat
 ```python
-import os
 import requests
+import os
 
 response = requests.post(
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + os.environ['GOOGLE_API_KEY'],
@@ -200,13 +216,15 @@ response = requests.post(
 ```
 
 ### Embeddings
+Here is the converted Python code:
+
 ```python
 import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get("GOOGLE_API_KEY"),
-    headers={"Content-Type": "application/json"},
+    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ['GOOGLE_API_KEY'],
+    headers={'Content-Type': 'application/json'},
     json={
         "contents": [
             {
