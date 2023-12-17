@@ -18,6 +18,7 @@ response = requests.post(
 ```
 use os.environ to get API keys
 don't use intermediate variables
+always use double quotes
 '''
 
 # Function to replace bash code blocks with python code blocks
