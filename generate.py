@@ -21,7 +21,24 @@ don't use intermediate variables
 always use double quotes
 """
 
-prompts = {"python": bash_to_python_prompt}
+bash_to_javascript_prompt = """\
+convert this block of code as concisely as possible to
+```javascript
+const fetch = require("node-fetch");
+const response = await fetch("https://...",{{
+    ...
+    body: ...
+}}).then((response) => response.json());
+```
+use process.env to get API keys
+don't use intermediate variables
+always use double quotes
+"""
+
+prompts = {
+    "python": bash_to_python_prompt,
+    "javascript": bash_to_javascript_prompt,
+}
 
 def transpile_readme(readme_content, to_language):
     # Function to replace bash code blocks with python code blocks
@@ -30,9 +47,7 @@ def transpile_readme(readme_content, to_language):
         generator = ModifyCodeChain.from_instruction(
             prompts[to_language], ChatOpenAI(model="gpt-3.5-turbo", temperature=0.2)
         )
-        result = f"```{to_language}\n{generator.run(bash_code)}\n```"
-        print(result)
-        return result
+        return f"```{to_language}\n{generator.run(bash_code)}\n```"
 
     # Use re.sub() to find and replace bash code blocks with python code blocks
     return re.sub(
@@ -43,7 +58,10 @@ def transpile_readme(readme_content, to_language):
 with open("README.md", "r") as readme_file:
     readme_content = readme_file.read()
 
-# Write the updated content back to README.md
+# Write the transpiled README-python.md and README-javascript.md
 with open("README-python.md", "w") as readme_file:
     readme_file.write(transpile_readme(readme_content, "python"))
     print("Wrote README-python.md")
+with open("README-js.md", "w") as readme_file:
+    readme_file.write(transpile_readme(readme_content, "javascript"))
+    print("Wrote README-js.md")
