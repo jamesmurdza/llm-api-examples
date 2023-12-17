@@ -1,2 +1,4 @@
 regex
 openai
+langchain
+codechain
