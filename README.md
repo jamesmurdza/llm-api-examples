@@ -17,6 +17,7 @@ See also: [List of cloud hosts for inference and fine-tuning](https://github.com
 - [Cohere](#cohere)
 - [Mistral](#mistral)
 - [Google](#google)
+- [Groq](#groq)
 
 ## OpenAI
 
@@ -180,6 +181,32 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:gene
             "text": "This is a sentence."
           }
         ]
+      }
+    ]
+  }'
+```
+
+## Groq
+
+🔑 Get API key [here](https://console.groq.com/keys).
+
+📃 API [docs](https://console.groq.com/docs/).
+
+### Chat
+```bash
+curl "https://api.groq.com/openai/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GROQ_API_KEY" \
+  -d '{
+    "model": "mixtral-8x7b-32768",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
       }
     ]
   }'
