@@ -17,6 +17,7 @@ See also: [List of cloud hosts for inference and fine-tuning](https://github.com
 - [Cohere](#cohere)
 - [Mistral](#mistral)
 - [Google](#google)
+- [Groq](#groq)
 
 ## OpenAI
 
@@ -26,7 +27,6 @@ See also: [List of cloud hosts for inference and fine-tuning](https://github.com
 
 ### Chat
 ```javascript
-const fetch = require("node-fetch");
 const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -36,14 +36,8 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
     body: JSON.stringify({
         "model": "gpt-3.5-turbo",
         "messages": [
-            {
-                "role": "system",
-                "content": "You are a helpful assistant."
-            },
-            {
-                "role": "user",
-                "content": "Hello!"
-            }
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Hello!"}
         ]
     })
 }).then((response) => response.json());
@@ -53,11 +47,11 @@ const response = await fetch("https://api.openai.com/v1/chat/completions", {
 ```javascript
 const fetch = require("node-fetch");
 const response = await fetch("https://api.openai.com/v1/embeddings", {
+    method: "POST",
     headers: {
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json"
     },
-    method: "POST",
     body: JSON.stringify({
         "input": "The food was delicious and the wine...",
         "model": "text-embedding-ada-002",
@@ -85,7 +79,7 @@ const response = await fetch("https://api.anthropic.com/v1/complete", {
     },
     body: JSON.stringify({
         "model": "claude-2.1",
-        "prompt": "\\n\\nHuman: Hello, world!\\n\\nAssistant:",
+        "prompt": "\n\nHuman: Hello, world!\n\nAssistant:",
         "max_tokens_to_sample": 256
     })
 }).then((response) => response.json());
@@ -101,12 +95,12 @@ const response = await fetch("https://api.anthropic.com/v1/complete", {
 ```javascript
 const fetch = require("node-fetch");
 const response = await fetch("https://api.cohere.ai/v1/chat", {
-    method: "POST",
     headers: {
         "accept": "application/json",
         "content-type": "application/json",
         "Authorization": `Bearer ${process.env.COHERE_API_KEY}`
     },
+    method: "POST",
     body: JSON.stringify({
         "chat_history": [
             {"role": "USER", "message": "Who discovered gravity?"},
@@ -120,7 +114,6 @@ const response = await fetch("https://api.cohere.ai/v1/chat", {
 
 ### Embeddings
 ```javascript
-const fetch = require("node-fetch");
 const response = await fetch("https://api.cohere.ai/v1/embed", {
     method: "POST",
     headers: {
@@ -163,7 +156,6 @@ const response = await fetch("https://api.mistral.ai/v1/chat/completions", {
 
 ### Embeddings
 ```javascript
-const fetch = require("node-fetch");
 const response = await fetch("https://api.mistral.ai/v1/embeddings", {
     method: "POST",
     headers: {
@@ -187,10 +179,10 @@ const response = await fetch("https://api.mistral.ai/v1/embeddings", {
 ### Chat
 ```javascript
 const fetch = require("node-fetch");
-const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + process.env.GOOGLE_API_KEY, {
-    method: "POST",
+const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GOOGLE_API_KEY}`,{
+    method: 'POST',
     headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
     },
     body: JSON.stringify({
         "contents": [
@@ -210,9 +202,9 @@ const response = await fetch("https://generativelanguage.googleapis.com/v1beta/m
 ```javascript
 const fetch = require("node-fetch");
 const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + process.env.GOOGLE_API_KEY, {
-    method: "POST",
+    method: 'POST',
     headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
     },
     body: JSON.stringify({
         "contents": [
@@ -223,6 +215,30 @@ const response = await fetch("https://generativelanguage.googleapis.com/v1beta/m
                     }
                 ]
             }
+        ]
+    })
+}).then((response) => response.json());
+```
+
+## Groq
+
+🔑 Get API key [here](https://console.groq.com/keys).
+
+📃 API [docs](https://console.groq.com/docs/).
+
+### Chat
+```javascript
+const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
+    },
+    body: JSON.stringify({
+        "model": "mixtral-8x7b-32768",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Hello!"}
         ]
     })
 }).then((response) => response.json());

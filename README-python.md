@@ -17,6 +17,7 @@ See also: [List of cloud hosts for inference and fine-tuning](https://github.com
 - [Cohere](#cohere)
 - [Mistral](#mistral)
 - [Google](#google)
+- [Groq](#groq)
 
 ## OpenAI
 
@@ -33,7 +34,7 @@ response = requests.post(
     "https://api.openai.com/v1/chat/completions",
     headers={
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + os.environ["OPENAI_API_KEY"]
+        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}"
     },
     json={
         "model": "gpt-3.5-turbo",
@@ -53,7 +54,7 @@ import os
 response = requests.post(
     "https://api.openai.com/v1/embeddings",
     headers={
-        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+        "Authorization": "Bearer " + os.environ.get("OPENAI_API_KEY"),
         "Content-Type": "application/json"
     },
     json={
@@ -81,7 +82,7 @@ response = requests.post(
         "accept": "application/json",
         "anthropic-version": "2023-06-01",
         "content-type": "application/json",
-        "x-api-key": os.environ["ANTHROPIC_API_KEY"]
+        "x-api-key": os.environ.get("ANTHROPIC_API_KEY")
     },
     json={
         "model": "claude-2.1",
@@ -158,7 +159,7 @@ response = requests.post(
     headers={
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": f"Bearer {os.environ['MISTRAL_API_KEY']}"
+        "Authorization": f"Bearer {os.environ.get('MISTRAL_API_KEY')}"
     },
     json={
         "model": "mistral-tiny",
@@ -222,7 +223,7 @@ import requests
 import os
 
 response = requests.post(
-    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ["GOOGLE_API_KEY"],
+    "https://generativelanguage.googleapis.com/v1beta/models/embedding-001:generateContent?key=" + os.environ.get("GOOGLE_API_KEY"),
     headers={
         "Content-Type": "application/json"
     },
@@ -235,6 +236,33 @@ response = requests.post(
                     }
                 ]
             }
+        ]
+    }
+)
+```
+
+## Groq
+
+🔑 Get API key [here](https://console.groq.com/keys).
+
+📃 API [docs](https://console.groq.com/docs/).
+
+### Chat
+```python
+import requests
+import os
+
+response = requests.post(
+    "https://api.groq.com/openai/v1/chat/completions",
+    headers={
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {os.environ['GROQ_API_KEY']}"
+    },
+    json={
+        "model": "mixtral-8x7b-32768",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Hello!"}
         ]
     }
 )
